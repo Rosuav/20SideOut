@@ -7,8 +7,8 @@ FFMPEG and a Python script, with the goal being that the entire process can be
 driven by text files.
 
 Notes in this file will be spoiler-free. If you read the internal notes in
-[their own file](NOTES.md), you may expose yourself to spoilers both for the
-original movie and for the webcomic. Also, stuff may change (in the webcomic,
+[their own file](notes/NOTES.md), you may expose yourself to spoilers both for
+the original movie and for the webcomic. Also, stuff may change (in the comic,
 not the movie) prior to release.
 
 The Setting
