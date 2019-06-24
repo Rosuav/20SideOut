@@ -4,9 +4,11 @@ import subprocess
 
 # Each frame is actually a pair - that one and the one following it.
 # Ideally, this should span a hard cut in the movie, which makes frame
-# counting easy.
+# counting easy. NOTE: This may take a couple of minutes of chugging,
+# and may not show much output on the console while it does it.
 frames = {
 	2839: "find_console", # When Joy finds the console for the first time
+	158682: "cat_yelp", # The cat from the end credits - from console to yelp
 }
 
 for frm, desc in frames.items():
