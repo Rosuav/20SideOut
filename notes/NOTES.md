@@ -6,6 +6,9 @@ seeing things that aren't finished yet, may never be finished, and will
 reveal details about things you haven't yet gotten up to. And there'll be
 unmarked spoilers for the movie "Inside Out", too. Just sayin'.
 
+Sadness's player has some experience with this game system, and is avoiding
+spoilers. The other players are brand new to this, but know gaming generally.
+
 Each of the five PCs has some sort of special ability - a kind of class skill
 or spell or something. Subject to revision, current theory is:
 
@@ -13,8 +16,10 @@ or spell or something. Subject to revision, current theory is:
   the other PCs (probably limited to once per session?) and state what the
   characters will do. This can be used to break ties, but occasionally to
   drive things forward a particular way.
-* Sadness's power is not known at the start of the story. Figuring this out is
-  the main body of the plot.
+* Sadness's power is not initially known to anyone but herself and the DM. She
+  can analyze memories, and can frob them to prevent them from fading to grey.
+  This also turns them blue, which creates conflict with the other emotions.
+  Sadness also has more skill points than the other characters.
 * Fear is taller and more agile than the other emotions, and he can lift and
   carry objects that the others can't do.
 * Disgust has a +8 bonus to Bluff, Sense Motive, and related skill checks.
