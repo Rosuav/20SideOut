@@ -43,3 +43,8 @@ Encounters:
   emotion that you epitomize? So if Joy can make Sadness happy, Joy gets XP?
 * The dream is just the DM's closer, attempting to summarize the session, but
   Joy decides to interact with it. One quick line and that's it.
+
+Second session
+--------------
+
+Starting at 0:20:00 in the movie, this day is First Day At School.
