@@ -88,3 +88,21 @@ Encounter: Dinner with Mum and Dad
 * "New plan, guys. We gotta get Joy and Sadness back up here."
 * DM: "I guess that's it for this week. Next week, looks like we're starting
   with a split party. That's always fun."
+
+Third session
+-------------
+
+Opens with the consequences of previous session - Goofball crashes out.
+Sadness knows exactly what's happening, but handballs to Joy (avoiding any
+spoilers).
+
+Must use the "positive you'll get lost in there" line.
+
+Sadness has a lot of skill points, hence can roll Survival checks with good
+odds. She also takes the opportunity to de-fade a bunch of memories.
+
+Scene with hockey friend is another failed encounter.
+
+Joy and Sadness needing to go the long way "there's gotta be a better way"
+is the DM's cue to basically drop something on them - in this case, intro
+Bing Bong.
