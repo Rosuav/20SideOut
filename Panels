@@ -4,10 +4,10 @@
 
 # A panel has a width and height.
 # Eventually all panels will be given a visual frame at that exact size.
-panel(300,400):
+panel(300,400)
 	# Inside one panel, we have a series of pieces.
 	# A piece can be cropped from an existing frame:
-	2839[450,0,880,480,200,-1](50, 50)
+	2839[450,0,880,480,200,...](50, 50)
 	# Or from a text string:
 	"Joy"(150, 0)
 	# Either way, it is positioned at a particular (x, y) on the target.
@@ -17,3 +17,5 @@ panel(300,400):
 		" flowed onto another line"
 		" and another line"
 		(0, 380)
+	# When cropping, you can also scale to (x,y) or to (x,...) or (...,y)
+	# where the latter forms will maintain aspect ratio.
