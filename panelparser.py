@@ -5,6 +5,7 @@ Entry points:
 prescan(expr, info) - prescan an expression, doing minimal work
 execute(expr, info) - execute the expression over the given image
 """
+from PIL import Image, ImageDraw
 
 def prescan_Call(expr, info):
 	"""Call places the called object at the target location"""
@@ -43,6 +44,9 @@ def prescan(expr, info):
 
 # ----------------------
 
+# Tiny image just for font metrics
+measure = ImageDraw.Draw(Image.new("RGB", (1, 1)))
+
 def execute_Call(expr, info):
 	piece = execute(expr.func, info)
 	pos = tuple(c.value for c in expr.args) # assumes all are constant ints
@@ -52,7 +56,10 @@ def execute_Call(expr, info):
 def execute_Constant(expr, info):
 	"""A constant string is created as a text node; a constant int is a frame."""
 	if isinstance(expr.value, str):
-		raise NotImplementedError("TODO: Synthesize text images")
+		size = measure.textsize(expr.value)
+		ret = Image.new("RGB", size)
+		ImageDraw.Draw(ret).text((0,0), expr.value)
+		return ret
 	if isinstance(expr.value, int):
 		return info["frames"][expr.value]
 	raise SyntaxError("Bad constant type")

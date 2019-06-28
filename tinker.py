@@ -88,3 +88,4 @@ for panel in info["panels"]:
 	for segment in panel[1:]:
 		execute(segment, info)
 	print(info["target"])
+	info["target"].show()
