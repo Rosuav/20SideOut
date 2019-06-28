@@ -9,14 +9,17 @@ Goals
 3b) Speech bubble incl pointer
 3c) Variants eg "boom" sounds, dice rolls?
 4) Combine sub-pieces to assemble a coherent page
+   https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.paste
 5) Govern everything with a simple text file
 
+Need a tool to measure an image and find the appropriate coords
+Also a tool to pick frames by scanning the movie.
 """
 import os
 import subprocess
 from PIL import Image
 
-def get_frames(frames):
+def cache_frames(frames):
 	try:
 		got = set(os.listdir("frames"))
 	except FileNotFoundError:
@@ -35,4 +38,9 @@ def get_frames(frames):
 	for idx, frm in enumerate(frames, 1):
 		os.rename(tmpfn % idx, "frames/%d.png" % frm)
 
-get_frames([2839, 2840])
+def get_frames(frames):
+	cache_frames(frames)
+	return {f: Image.open("frames/%d.png" % f) for f in frames}
+
+frames = get_frames([2839, 2840])
+print(frames)
