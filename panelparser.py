@@ -5,7 +5,7 @@ Entry points:
 prescan(expr, info) - prescan an expression, doing minimal work
 execute(expr, info) - execute the expression over the given image
 """
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 def prescan_Call(expr, info):
 	"""Call places the called object at the target location"""
@@ -44,8 +44,8 @@ def prescan(expr, info):
 
 # ----------------------
 
-# Find the default font. TODO: Get a better font.
-font = ImageDraw.Draw(Image.new("RGB", (1, 1))).getfont()
+# TODO: Locate this in a less-hard-coded way
+font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", size=22)
 
 def execute_Call(expr, info):
 	piece = execute(expr.func, info)
@@ -58,7 +58,7 @@ def execute_Constant(expr, info):
 	if isinstance(expr.value, str):
 		size = font.getsize(expr.value)
 		ret = Image.new("RGB", size)
-		ImageDraw.Draw(ret).text((0,0), expr.value)
+		ImageDraw.Draw(ret).text((0,0), expr.value, font=font)
 		return ret
 	if isinstance(expr.value, int):
 		return info["frames"][expr.value]
