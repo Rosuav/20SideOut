@@ -65,7 +65,25 @@ def execute_Constant(expr, info):
 	raise SyntaxError("Bad constant type")
 
 def execute_Subscript(expr, info):
-	return execute(expr.value, info) # TODO: Actually, yaknow, crop it
+	base = execute(expr.value, info)
+	coords = [c.value for c in expr.slice.value.elts]
+	# piece = f.resize(box=(450, 0, 880, 480), size=(150, 150*(480-0)//(880-450)))
+	if len(coords) == 4:
+		# Crop without scaling
+		print(coords)
+		return base.resize(box=coords)
+	if len(coords) == 6:
+		# Crop and scale
+		# Use Ellipsis for width/height to maintain aspect ratio
+		# Note that coordinates are inclusive-exclusive, so (x2-x1)
+		# will be the original width.
+		x1, y1, x2, y2, w, h = coords
+		if w is ...:
+			w = h * (x2 - x1) // (y2 - y1)
+		elif h is ...:
+			h = w * (y2 - y1) // (x2 - x1)
+		return base.resize(box=(x1,y1,x2,y2), size=(w,h))
+	raise SyntaxError("Bad crop")
 
 def execute(expr, info):
 	"""Actually execute the given expression"""
