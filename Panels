@@ -1,0 +1,19 @@
+# Panel definitions
+# Lines that start with a hash are comments
+# Blank lines are ignored
+
+# A panel has a width and height.
+# Eventually all panels will be given a visual frame at that exact size.
+panel(300,400):
+	# Inside one panel, we have a series of pieces.
+	# A piece can be cropped from an existing frame:
+	2839[450,0,880,480,200,-1](50, 50)
+	# Or from a text string:
+	"Joy"(150, 0)
+	# Either way, it is positioned at a particular (x, y) on the target.
+	# Expressions may be flowed onto additional physical lines if indented.
+	# TODO: Gravity? It might be easier to position text by centering it.
+	"Long text string"
+		" flowed onto another line"
+		" and another line"
+		(0, 380)

@@ -44,3 +44,31 @@ def get_frames(frames):
 
 frames = get_frames([2839, 2840])
 print(frames)
+
+def parse_panels():
+	with open("Panels") as f:
+		for l in f:
+			l = l.rstrip() # Always dispose of trailing whitespace
+			line = l.lstrip()
+			if not line or line.startswith("#"): continue
+			indent = l[:-len(line)]
+			while (yield (indent, line)): yield None # Send True back in to have it re-send next time
+	while (yield ("", "")): yield None
+
+def read_panels():
+	gen = parse_panels()
+	for indent, line in gen:
+		if not line: break
+		if not indent:
+			# It should be a panel header
+			print("New panel", line)
+			continue
+		while True:
+			peek, nextline = next(gen)
+			# TODO: Ensure that indentation isn't mismatched
+			if len(peek) <= len(indent): break
+			line += "\n" + nextline
+		gen.send(1) # Put that thing back where it came from, or so help me, so help me...
+		print("%r" % line)
+
+panels = read_panels()
