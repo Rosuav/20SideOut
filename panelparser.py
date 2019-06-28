@@ -44,8 +44,8 @@ def prescan(expr, info):
 
 # ----------------------
 
-# Tiny image just for font metrics
-measure = ImageDraw.Draw(Image.new("RGB", (1, 1)))
+# Find the default font. TODO: Get a better font.
+font = ImageDraw.Draw(Image.new("RGB", (1, 1))).getfont()
 
 def execute_Call(expr, info):
 	piece = execute(expr.func, info)
@@ -56,7 +56,7 @@ def execute_Call(expr, info):
 def execute_Constant(expr, info):
 	"""A constant string is created as a text node; a constant int is a frame."""
 	if isinstance(expr.value, str):
-		size = measure.textsize(expr.value)
+		size = font.getsize(expr.value)
 		ret = Image.new("RGB", size)
 		ImageDraw.Draw(ret).text((0,0), expr.value)
 		return ret
