@@ -98,6 +98,7 @@ def read_panels(fn):
 		if not indent:
 			# It should be a panel header
 			print("New panel", line)
+			info["panels"].append([line])
 			continue
 		while True:
 			_, peek, nextline = next(gen) # We don't care about continuation line numbers currently
@@ -107,9 +108,12 @@ def read_panels(fn):
 		gen.send(1) # Put that thing back where it came from, or so help me, so help me...
 		expr = compile(line, "%s:%d" % (fn, pos), "eval", ast.PyCF_ONLY_AST).body
 		prescan(expr, info)
-		info["panels"].append(expr)
+		info["panels"][-1].append(expr)
 	return info
 
 info = read_panels("Panels")
 print("Need frames:", info["frame_usage"])
 frames = get_frames(info["frame_usage"])
+
+for panel in info["panels"]:
+	print(panel)
