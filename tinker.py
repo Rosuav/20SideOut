@@ -97,7 +97,6 @@ def read_panels(fn):
 		if not line: break
 		if not indent:
 			# It should be a panel header
-			print("New panel", line)
 			info["panels"].append([line])
 			continue
 		while True:
@@ -116,4 +115,9 @@ print("Need frames:", info["frame_usage"])
 frames = get_frames(info["frame_usage"])
 
 for panel in info["panels"]:
+	# panel[0] is the metadata, everything else is a piece
 	print(panel)
+	# TODO: parse out the metadata here or above
+	target = Image.new("RGB", (300, 400))
+	#for segment in panel[1:]:
+		#execute(segment, target)
