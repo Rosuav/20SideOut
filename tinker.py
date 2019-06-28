@@ -2,7 +2,7 @@
 Goals
 -----
 
-1) Lift images out of movie - pillow? if not, ffmpeg
+1) Lift images out of movie - FFMPEG (borrow from resync)
 2) Crop specific portions from specific frames
 3) Synthesize sub-pieces from text
 3a) Narration - square box
@@ -12,4 +12,4 @@ Goals
 5) Govern everything with a simple text file
 
 """
-import PIL.Image
+from PIL import Image
