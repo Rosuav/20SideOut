@@ -78,11 +78,13 @@ def read_panels(fn):
 info = read_panels("Panels")
 print("Need frames:", info["frame_usage"])
 frames = get_frames(info["frame_usage"])
+print("Got frames:", frames)
 
 for panel in info["panels"]:
 	# panel[0] is the metadata, everything else is a piece
 	print(panel)
 	# TODO: parse out the metadata here or above
-	target = Image.new("RGB", (300, 400))
-	#for segment in panel[1:]:
-		#execute(segment, target)
+	info = {"target": Image.new("RGB", (300, 400)), "frames": frames}
+	for segment in panel[1:]:
+		execute(segment, info)
+	print(info["target"])

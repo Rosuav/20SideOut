@@ -3,7 +3,7 @@
 Entry points:
 
 prescan(expr, info) - prescan an expression, doing minimal work
-execute(expr, img) - execute the expression over the given image
+execute(expr, info) - execute the expression over the given image
 """
 
 def prescan_Call(expr, info):
@@ -43,5 +43,25 @@ def prescan(expr, info):
 
 # ----------------------
 
-def execute(expr, img):
-	raise NotImplementedError
+def execute_Call(expr, info):
+	piece = execute(expr.func, info)
+	pos = tuple(c.value for c in expr.args) # assumes all are constant ints
+	print("Pasting", piece)
+	info["target"].paste(piece, pos)
+
+def execute_Constant(expr, info):
+	"""A constant string is created as a text node; a constant int is a frame."""
+	if isinstance(expr.value, str):
+		raise NotImplementedError("TODO: Synthesize text images")
+	if isinstance(expr.value, int):
+		return info["frames"][expr.value]
+	raise SyntaxError("Bad constant type")
+
+def execute_Subscript(expr, info):
+	return execute(expr.value, info) # TODO: Actually, yaknow, crop it
+
+def execute(expr, info):
+	"""Actually execute the given expression"""
+	f = globals()["execute_" + type(expr).__name__]
+	if f: return f(expr, info)
+	else: raise SyntaxError("Unexpected expression in panel definition", expr)
