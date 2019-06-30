@@ -19,3 +19,12 @@ panel(300,400)
 		(0, 380)
 	# When cropping, you can also scale to (x,y) or to (x,...) or (...,y)
 	# where the latter forms will maintain aspect ratio.
+
+# For speech bubbles, maybe they can be done by having the origin be the tip
+# of the stalk, and then you give a direction and length to link that to the
+# text? Also, it may be worth having ALL text start out origin at the center
+# of the text box, and to allow any object to be chained to any other with a
+# speechy stalk, which will change its origin to be the new tip. So then, if
+# you put another piece of text after it, you'll overlay that, and then that
+# one's stalk would come out from there, etc. Maybe (ab)use subtraction? And
+# this would mean all objects would need a retained origin.
