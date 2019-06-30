@@ -28,3 +28,14 @@ panel(300,400)
 # you put another piece of text after it, you'll overlay that, and then that
 # one's stalk would come out from there, etc. Maybe (ab)use subtraction? And
 # this would mean all objects would need a retained origin.
+
+# Would be nice to have a "conversation mode", where two (or more) chains of
+# text boxes are automeasured by each other. Or maybe a single chain of text
+# boxes has two (or more) independent stalk links.
+
+# A text box chain may need to be connected to a character at either the top
+# or the bottom (start or end of the chain). The order of text boxes in this
+# file should correspond to the intended reading order, but if they fill the
+# space ABOVE the character, the LAST one will join to him/her; contrariwise
+# if the text boxes are BELOW the character, the FIRST one will join both to
+# the character and to the next text box. Speech is hard. Words are hard.
